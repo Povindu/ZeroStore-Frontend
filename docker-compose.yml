@@ -1,0 +1,10 @@
+services:
+  nextjs-app:
+    image: zerostore-fe
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      # Optional overrides or additional env vars
+      NODE_ENV: production
