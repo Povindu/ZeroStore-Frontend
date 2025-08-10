@@ -52,7 +52,7 @@ export default function ProductPage() {
     }
 
     fetchData();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt_token");

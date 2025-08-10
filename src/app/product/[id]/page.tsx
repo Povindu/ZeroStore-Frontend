@@ -26,6 +26,7 @@ export default function ProductPage() {
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export default function ProductPage() {
       .finally(() => {
         setLoading(false);
       });
-  }, [id]);
+  }, [id, router]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt_token");
@@ -67,8 +68,12 @@ export default function ProductPage() {
   if (loading) return <p className="p-6">Loading...</p>;
 
   if (error) {
-    
-    if (error.message == "401" || error.message == "403" || error.message == "400" || error.message == "404") {
+    if (
+      error.message == "401" ||
+      error.message == "403" ||
+      error.message == "400" ||
+      error.message == "404"
+    ) {
       return (
         <div>
           <Header />
@@ -76,7 +81,10 @@ export default function ProductPage() {
             <h1 className="text-xl mb-10 text-red-600 text-center">
               Error loading product.
             </h1>
-            <p className="text-center"> Please check if the product ID is correct or if you are logged in.</p>
+            <p className="text-center">
+              {" "}
+              Please check if the product ID is correct or if you are logged in.
+            </p>
           </main>
         </div>
       );

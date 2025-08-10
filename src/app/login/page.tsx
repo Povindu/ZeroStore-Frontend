@@ -44,6 +44,7 @@ export default function LoginPage() {
 
       localStorage.setItem("jwt_token", token);
       router.push("/products");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("err", err);
       setError(err.message || "Login failed");
